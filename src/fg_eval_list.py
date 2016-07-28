@@ -11,17 +11,17 @@ Foreground and angle map images. Re-indexed according to the line number.
 E.g. 000000_fg.png, 000000_angle.png, 000001_fg.png, etc.
 
 Usage:
-python fg_eval_list.py  --list     {LIST_FILENAME}  \
-                        --output   {OUTPUT_FOLDER}  \
+python fg_eval_list.py  --list     {LIST_FILENAME}     \
+                        --output   {OUTPUT_FOLDER}     \
                         --restore  {MODEL_FOLDER}
 
 Example:
-python fg_eval_list.py  --list     "kitti_test.txt"  \
-                        --output   "kitti_output"  \
+python fg_eval_list.py  --list     "kitti_test.txt"    \
+                        --output   "kitti_output"      \
                         --restore  "kitti_model"
 
 Required flags:
-    --list              Input file path. Plain text file, separated by line.
+    --list              Input file path. Plain text file, line separated.
     --output            Output folder path.
     --restore           Trained model folder path.
 
