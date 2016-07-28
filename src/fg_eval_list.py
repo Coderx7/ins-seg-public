@@ -40,8 +40,9 @@ import os
 import tensorflow as tf
 import tfplus
 import tfplus.data.list_image_data_provider
-import fg_model_new
 from tfplus.utils import BatchIterator, ConcurrentBatchIterator
+
+from model import fg
 
 tfplus.init('Run inference on a foreground segmentation network')
 

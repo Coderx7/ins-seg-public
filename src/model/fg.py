@@ -35,7 +35,7 @@ tfplus.cmd_args.add('fg:frozen', 'bool', False)
 
 class FGModel(tfplus.nn.ContainerModel):
 
-    def __init__(self, name='fg_model'):
+    def __init__(self, name='fg'):
         super(FGModel, self).__init__(name=name)
         self.register_option('fg:inp_depth')
         self.register_option('fg:padding')
