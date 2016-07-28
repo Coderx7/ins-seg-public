@@ -73,12 +73,13 @@ if opt['output'] is None:
 sess = tf.Session()
 
 # Initialize model (CPU inference only).
-model = (tfplus.nn.model.create_from_main('fg')
-         .set_gpu(-1)
-         .restore_options_from(opt['restore'])
-         .build_eval()
-         .restore_weights_from(sess, opt['restore'])
-         )
+model = (
+    tfplus.nn.model.create_from_main('fg')
+    .set_gpu(-1)
+    .restore_options_from(opt['restore'])
+    .build_eval()
+    .restore_weights_from(sess, opt['restore'])
+)
 
 # Initialize data.
 data = tfplus.data.create_from_main('list_img', fname=opt['list'],
