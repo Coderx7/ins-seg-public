@@ -1,15 +1,35 @@
 """
+Author: Mengye Ren (mren@cs.toronto.edu)
+
 Run inference on a foreground segmentation network with a list of images.
 
-Input a plain text file with each line a path to the input image.
-Specify the output folder using flag "--output"
-The output images will be re-indexed according to the line number.
+Input:
+A plain text file with each line a path to the input image.
+
+Output:
+Foreground and angle map images. Re-indexed according to the line number.
+E.g. 000000_fg.png, 000000_angle.png, 000001_fg.png, etc.
 
 Usage:
-python fg_eval_list.py  --list {LIST_FILENAME} 
-                        --restore {MODEL_FOLDER} 
-                        --output {OUTPUT_FOLDER} 
-                        --prefetch
+python fg_eval_list.py  --list     {LIST_FILENAME}  \
+                        --output   {OUTPUT_FOLDER}  \
+                        --restore  {MODEL_FOLDER}
+
+Example:
+python fg_eval_list.py  --list     "kitti_test.txt"  \
+                        --output   "kitti_output"  \
+                        --restore  "kitti_model"
+
+Required flags:
+    --list              Input file path. Plain text file, separated by line.
+    --output            Output folder path.
+    --restore           Trained model folder path.
+
+Optional flags:
+    --prefetch          Pre-fetch data batches on CPU.
+    --inp_height        Resize input image height, default 128.
+    --inp_width         Resize input image width, default 448.
+    --batch_size        Inference batch size, default 4.
 """
 
 import cslab_environ
@@ -32,8 +52,6 @@ tfplus.cmd_args.add('output', 'str', None)
 tfplus.cmd_args.add('inp_height', 'int', 128)
 tfplus.cmd_args.add('inp_width', 'int', 448)
 tfplus.cmd_args.add('batch_size', 'int', 4)
-tfplus.cmd_args.add('dataset', 'str', 'kitti')
-tfplus.cmd_args.add('localhost', 'str', 'http://localhost')
 tfplus.cmd_args.add(
     'restore', 'str', '/ais/gobi4/mren/results/img-count/fg_kitti')
 tfplus.cmd_args.add('prefetch', 'bool', False)
